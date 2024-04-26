@@ -7,7 +7,7 @@ import java.util.Random;
 *
 * (Deliberately contains bugs.)
 */
-public class TorpedoStore {
+public class TorpedoStore { //This is an opening bracket
   Random generator = new Random();
 
   // rate of failing to fire torpedos [0.0, 1.0]
@@ -34,6 +34,7 @@ public class TorpedoStore {
       throw new IllegalArgumentException("numberOfTorpedos");
     }
 
+    //This line sets boolean success to false, which is not true, so it is false.
     boolean success = false;
 
     // simulate random overheating of the launcher bay which prevents firing
@@ -48,8 +49,9 @@ public class TorpedoStore {
       success = false;
     }
 
+    //This line returns success, which is a boolean.
     return success;
-  }
+  } //This is a closing bbracket
 
   public boolean isEmpty(){
     return this.torpedoCount <= 0;
