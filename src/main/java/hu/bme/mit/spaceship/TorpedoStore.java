@@ -7,7 +7,8 @@ import java.util.Random;
 *
 * (Deliberately contains bugs.)
 */
-public class TorpedoStore {
+public class TorpedoStore { //This is an opening bracket
+  private Random generator = new Random();
 
   // rate of failing to fire torpedos [0.0, 1.0]
   private double FAILURE_RATE = 0.0; //NOSONAR
@@ -30,26 +31,27 @@ public class TorpedoStore {
 
   public boolean fire(int numberOfTorpedos){
     if(numberOfTorpedos < 1 || numberOfTorpedos > this.torpedoCount){
-      new IllegalArgumentException("numberOfTorpedos");
+      throw new IllegalArgumentException("numberOfTorpedos");
     }
 
+    //This line sets boolean success to false, which is not true, so it is false.
     boolean success = false;
 
     // simulate random overheating of the launcher bay which prevents firing
-    Random generator = new Random();
     double r = generator.nextDouble();
 
     if (r >= FAILURE_RATE) {
       // successful firing
-      this.torpedoCount =- numberOfTorpedos;
+      this.torpedoCount -= numberOfTorpedos;
       success = true;
     } else {
       // simulated failure
       success = false;
     }
 
+    //This line returns success, which is a boolean.
     return success;
-  }
+  } //This is a closing bbracket
 
   public boolean isEmpty(){
     return this.torpedoCount <= 0;
